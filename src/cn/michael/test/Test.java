@@ -6,11 +6,14 @@ import cn.michael.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws IOException{
-        UserDao userDao = new UserDao();
-        userDao.paging(1,2);
+        SqlSession sqlSession = MyBatisUtil.getSession();
+        UserDao userDao = sqlSession.getMapper(UserDao.class);
+        List<User> users = userDao.getAll();
+        System.out.println(users);
     }
 
 }

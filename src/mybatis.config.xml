@@ -15,6 +15,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="cn/michael/entity/user.mapper.xml"/>
+        <mapper class="cn.michael.dao.UserDao"/>
     </mappers>
 </configuration>
