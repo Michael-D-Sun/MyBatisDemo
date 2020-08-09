@@ -2,6 +2,7 @@ package cn.michael.dao;
 
 import cn.michael.entity.User;
 import cn.michael.util.MyBatisUtil;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
@@ -17,6 +18,14 @@ public class UserDao {
         map.put("startIndex",(currentIndex-1)* pageSize);;
         map.put("pageSize", pageSize);
         List<User> page = session.selectList("cn.michael.entity.UserMapper.getPage", map);
+        System.out.println(page);
+        return page;
+    }
+
+    public List<User> paging(int currentIndex, int pageSize) throws IOException {
+        SqlSession session = MyBatisUtil.getSession();
+        RowBounds rowBounds = new RowBounds(currentIndex-1, pageSize);
+        List<User> page = session.selectList("cn.michael.entity.UserMapper.paging", null, rowBounds);
         System.out.println(page);
         return page;
     }

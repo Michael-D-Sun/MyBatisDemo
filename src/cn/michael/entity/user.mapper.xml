@@ -8,8 +8,12 @@
     select id, name, pwd from user limit #{startIndex}, #{pageSize}
     </select>
 
-    <select id="selectUser" parameterType="Map" resultType="cn.michael.entity.User">
+    <select id="selectUser" resultType="cn.michael.entity.User">
     select id, name, pwd from user where id=#{id}
+    </select>
+
+    <select id="paging" resultType="cn.michael.entity.User">
+    select * from user
     </select>
 
     <insert id="addUser" parameterType="cn.michael.entity.User" useGeneratedKeys="true">

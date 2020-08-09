@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Test {
     public static void main(String[] args) throws IOException{
         UserDao userDao = new UserDao();
-        userDao.getPage(2,2);
+        userDao.paging(1,2);
     }
 
 }
