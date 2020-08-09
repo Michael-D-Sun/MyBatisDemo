@@ -15,6 +15,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper class="cn.michael.dao.UserDao"/>
+        <mapper class="cn.michael.dao.StudentMapper"/>
     </mappers>
 </configuration>
