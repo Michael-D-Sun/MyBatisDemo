@@ -10,11 +10,7 @@ import java.io.IOException;
 public class Test {
     public static void main(String[] args) throws IOException{
         UserDao userDao = new UserDao();
-        User user = new User();
-        user.setId(3);
-        user.setName("wangliu");
-        user.setPwd("12344fadafd");
-        userDao.updateUser(user);
+        userDao.getPage(2,2);
     }
 
 }

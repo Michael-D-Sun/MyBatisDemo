@@ -9,15 +9,6 @@ public class User {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", pwd='" + pwd + '\'' +
-                '}';
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -36,5 +27,14 @@ public class User {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pwd='" + pwd + '\'' +
+                '}';
     }
 }

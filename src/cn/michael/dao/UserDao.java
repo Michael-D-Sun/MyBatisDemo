@@ -5,8 +5,22 @@ import cn.michael.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class UserDao {
+
+    public List<User> getPage(int currentIndex, int pageSize) throws IOException {
+        SqlSession session = MyBatisUtil.getSession();
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("startIndex",(currentIndex-1)* pageSize);;
+        map.put("pageSize", pageSize);
+        List<User> page = session.selectList("cn.michael.entity.UserMapper.getPage", map);
+        System.out.println(page);
+        return page;
+    }
+
     public User getById(int id) throws IOException {
         SqlSession session = MyBatisUtil.getSession();
         User user = session.selectOne("cn.michael.entity.UserMapper.selectUser", id);
