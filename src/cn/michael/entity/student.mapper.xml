@@ -4,26 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.michael.entity.student.mapper">
 
-<!--    按结果嵌套处理-->
-<!--    <select id="getStudents" resultMap="StudentTeacher">-->
-<!--        SELECT s.id, s.name, t.* FROM student s, teacher t WHERE s.tid=t.tid-->
-<!--    </select>-->
-<!--    <resultMap id="StudentTeacher" type="cn.michael.entity.Student">-->
-<!--        <id column="id" property="id"/>-->
-<!--        <result column="name" property="name"/>-->
-<!--        <association property="teacher" javaType="cn.michael.entity.Teacher">-->
-<!--            <id column="tid" property="tid"/>-->
-<!--            <result column="name" property="name"/>-->
-<!--        </association>-->
-<!--    </resultMap>-->
-
-<!--   按查询嵌套查询 -->
-    <select id="getStudents" resultMap="StudentTeacher">
-        select * from student
-    </select>
-    <resultMap id="StudentTeacher" type="cn.michael.entity.Student">
-        <association property="teacher" column="tid" javaType="cn.michael.entity.Teacher" select="cn.michael.entity.teacher.mapper.getTeacher">
-
-        </association>
-    </resultMap>
+<select id="getStudentByID" resultType="cn.michael.entity.Student">
+    select * from student where tid=#{tid}
+</select>
 </mapper>

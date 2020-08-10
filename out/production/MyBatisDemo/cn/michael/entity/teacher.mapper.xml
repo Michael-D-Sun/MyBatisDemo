@@ -3,15 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.michael.entity.teacher.mapper">
-<select id="getTeacher" resultMap="TeacherStudent">
-    SELECT t.* ,s.id, s.name FROM student s, teacher t WHERE s.tid=t.tid and t.tid=#{id}
-</select>
+<!--    方式一 -->
+<!--<select id="getTeacher" resultMap="TeacherStudent">-->
+<!--    SELECT t.* ,s.id, s.name FROM student s, teacher t WHERE s.tid=t.tid and t.tid=#{id}-->
+<!--</select>-->
+<!--    <resultMap id="TeacherStudent" type="cn.michael.entity.Teacher">-->
+<!--        <id column="tid" property="tid"/>-->
+<!--        <result column="name" property="name"/>-->
+<!--        <collection property="students" ofType="cn.michael.entity.Student">-->
+<!--            <id column="id" property="id"/>-->
+<!--            <result column="name" property="name"/>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+<!--    方式二 -->
+    <select id="getTeacher" resultMap="TeacherStudent">
+        select * from teacher where tid=#{tid}
+    </select>
+
     <resultMap id="TeacherStudent" type="cn.michael.entity.Teacher">
-        <id column="tid" property="tid"/>
-        <result column="name" property="name"/>
-        <collection property="students" ofType="cn.michael.entity.Student">
-            <id column="id" property="id"/>
-            <result column="name" property="name"/>
-        </collection>
+        <collection property="students" javaType="ArrayList" ofType="cn.michael.entity.Student" column="tid" select="cn.michael.entity.student.mapper.getStudentByID"></collection>
     </resultMap>
 </mapper>
