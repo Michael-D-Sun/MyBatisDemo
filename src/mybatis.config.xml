@@ -15,6 +15,7 @@
         </environment>
     </environments>
     <mappers>
-        <mapper class="cn.michael.dao.StudentMapper"/>
+        <mapper resource="cn/michael/entity/student.mapper.xml"/>
+        <mapper resource="cn/michael/entity/teacher.mapper.xml"/>
     </mappers>
 </configuration>
